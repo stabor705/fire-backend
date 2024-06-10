@@ -1,7 +1,26 @@
 package pl.edu.agh.kis.firebackend.configuration;
 
+import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import pl.edu.agh.kis.firebackend.model.UpdatesQueue;
+import pl.edu.agh.kis.firebackend.model.events.FireBrigade;
+import pl.edu.agh.kis.firebackend.model.simulation.ForesterPatrol;
+import pl.edu.agh.kis.firebackend.service.StateUpdatesService;
+import reactor.core.publisher.Flux;
+
+@Configuration
+@AllArgsConstructor
 public class DeclaredQueues {
-    public static final String CAMERA_QUEUE_NAME = "camera.queue";
-    public static final String FIRE_BRIGADE_QUEUE_NAME = "fire-brigade.queue";
-    public static final String WIND_SPEED_QUEUE_NAME = "wind-speed.queue";
+    private final StateUpdatesService stateUpdatesService;
+
+    @Bean
+    Flux<FireBrigade> fireBrigadeUpdates() {
+        return stateUpdatesService.createUpdatesFlux(new UpdatesQueue<>("updates.fireBrigade", FireBrigade.class));
+    }
+
+    @Bean
+    Flux<ForesterPatrol> foresterPatrolUpdates() {
+        return stateUpdatesService.createUpdatesFlux(new UpdatesQueue<>("updates.foresterPatrol", ForesterPatrol.class));
+    }
 }

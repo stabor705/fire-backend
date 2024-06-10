@@ -2,22 +2,19 @@ package pl.edu.agh.kis.firebackend.service;
 
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.edu.agh.kis.firebackend.model.SimulationState;
-import pl.edu.agh.kis.firebackend.model.configuration.Configuration;
+import pl.edu.agh.kis.firebackend.model.events.FireBrigade;
+import pl.edu.agh.kis.firebackend.model.simulation.ForesterPatrol;
+import pl.edu.agh.kis.firebackend.model.simulation.SimulationState;
 import reactor.core.publisher.Flux;
-
-import java.time.Duration;
-import java.util.Date;
 
 @Service
 @AllArgsConstructor
 public class SimulationStateService {
-    private final ConfigurationService configurationService;
-    private final WindSpeedSensorUpdatesService windSpeedSensorUpdatesService;
-
     private SimulationState state;
+
+    private Flux<FireBrigade> fireBrigadeFlux;
+    private Flux<ForesterPatrol> foresterPatrolFlux;
 
     public SimulationState currentState() {
         return state;
@@ -25,7 +22,14 @@ public class SimulationStateService {
 
     @PostConstruct
     private void init() {
-        Configuration configuration = configurationService.getConfiguration();
-        this.state = SimulationState.fromConfiguration(configuration);
+        fireBrigadeFlux.subscribe(fireBrigade -> {
+            Integer key = fireBrigade.fireBrigadeId();
+            state.fireBrigades.put(key, fireBrigade);
+        });
+
+        foresterPatrolFlux.subscribe(foresterPatrol -> {
+            Integer key = foresterPatrol.foresterPatrolId();
+            state.foresterPatrols.put(key, foresterPatrol);
+        });
     }
 }

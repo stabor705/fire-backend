@@ -1,4 +1,4 @@
-package pl.edu.agh.kis.firebackend.model.sensor;
+package pl.edu.agh.kis.firebackend.model.events;
 
 import pl.edu.agh.kis.firebackend.model.primitives.Location;
 

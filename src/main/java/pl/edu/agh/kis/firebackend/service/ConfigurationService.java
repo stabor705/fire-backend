@@ -3,7 +3,7 @@ package pl.edu.agh.kis.firebackend.service;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.kis.firebackend.model.primitives.Direction;
 import pl.edu.agh.kis.firebackend.model.primitives.Location;
-import pl.edu.agh.kis.firebackend.model.SectorState;
+import pl.edu.agh.kis.firebackend.model.simulation.SectorState;
 import pl.edu.agh.kis.firebackend.model.configuration.Configuration;
 import pl.edu.agh.kis.firebackend.model.configuration.ConfigurationSector;
 

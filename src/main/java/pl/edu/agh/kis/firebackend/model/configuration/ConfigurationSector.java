@@ -1,6 +1,6 @@
 package pl.edu.agh.kis.firebackend.model.configuration;
 
-import pl.edu.agh.kis.firebackend.model.SectorState;
+import pl.edu.agh.kis.firebackend.model.simulation.SectorState;
 
 public record ConfigurationSector(
     int sectorId,
