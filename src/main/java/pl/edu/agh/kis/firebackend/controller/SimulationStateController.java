@@ -18,7 +18,7 @@ import java.time.Duration;
 public class SimulationStateController {
     private SimulationStateService simulationStateService;
 
-    @GetMapping(value = "/", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/run-simulation", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<SimulationStateDto> runSimulation(
             @RequestParam(required = false, defaultValue = "5") long interval,
             @RequestBody Configuration configuration) {
