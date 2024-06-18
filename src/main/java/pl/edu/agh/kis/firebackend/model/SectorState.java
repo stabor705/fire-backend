@@ -1,4 +1,4 @@
-package pl.edu.agh.kis.firebackend.model.simulation;
+package pl.edu.agh.kis.firebackend.model;
 
 import lombok.AllArgsConstructor;
 import pl.edu.agh.kis.firebackend.model.primitives.Direction;
@@ -15,4 +15,6 @@ public class SectorState {
     public double plantLitterMoisture;
     public double co2Concentration;
     public double pm2_5Concentration;
+    ThreatLevel threatLevel;
+    FireState fireState;
 }

@@ -5,7 +5,7 @@ import pl.edu.agh.kis.firebackend.model.primitives.Location;
 
 import java.util.Date;
 
-public record FireBrigade(
+public record EvFireBrigade(
     int fireBrigadeId,
     FireBrigadeState state,
     Date timestamp,

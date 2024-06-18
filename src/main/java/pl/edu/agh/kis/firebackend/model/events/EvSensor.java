@@ -4,7 +4,7 @@ import pl.edu.agh.kis.firebackend.model.primitives.Location;
 
 import java.util.Date;
 
-public interface Sensor<T> {
+public interface EvSensor<T> {
     int sensorId();
     Date timestamp();
     SensorType sensorType();

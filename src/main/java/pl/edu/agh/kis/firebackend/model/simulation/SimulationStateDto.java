@@ -1,6 +1,6 @@
 package pl.edu.agh.kis.firebackend.model.simulation;
 
-import pl.edu.agh.kis.firebackend.model.events.FireBrigade;
+import pl.edu.agh.kis.firebackend.model.ForesterPatrol;
 
 import java.util.ArrayList;
 import java.util.Date;

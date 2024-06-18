@@ -1,6 +1,5 @@
-package pl.edu.agh.kis.firebackend.model.simulation;
+package pl.edu.agh.kis.firebackend.model;
 
-import pl.edu.agh.kis.firebackend.model.ForesterPatrolState;
 import pl.edu.agh.kis.firebackend.model.primitives.Location;
 
 import java.util.Date;
@@ -11,5 +10,4 @@ public record ForesterPatrol(
     ForesterPatrolState state,
     Location baseLocation,
     Location currentLocation
-) {
-}
+) { }
